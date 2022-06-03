@@ -1,0 +1,21 @@
+Question : Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+ 
+
+class Solution {
+    public void rotate(int[] nums, int k)
+    {
+        int n = nums.length;   //here we taken length of array
+        int array[] = new int[n];  //here we created new array 
+        
+        for(int i =0;i<n;i++){        //for loop to rotate elements by k position
+            array[(i+k)%n] = nums[i];     //this expresion will results if length of array is 5 and we want to rotate array by 3 then first i=0 ,therefore (0+3)%5=3 therefore elements of 0th position will to in 3rd position in new array
+        }
+        
+        for(int i = 0;i<n;i++){ // this fore loop copies new array in previous array
+            nums[i]=array[i];
+        }
+ 
+}  
+    
+}

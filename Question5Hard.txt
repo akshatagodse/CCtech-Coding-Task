@@ -1,0 +1,43 @@
+Question : Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+
+
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int len1=nums1.length; //length of first array
+        int len2=nums2.length; //length of second array
+        int length=len1+len2;    //length of both array to create single new array
+        float result;
+        int array[]=new int[length]; //new array to merge two arrays
+        for(int i=0;i<len1;i++){     //for loop will copy first array to new array
+            array[i]=nums1[i];
+        }
+        for(int i=0;i<len2;i++){      //for loop will merges second array in new array after last element of first array
+            array[len1+i]=nums2[i];
+        }
+        for(int i=0;i<length;i++){       // this will sort new array made from two sorted arrays
+            for(int j=i+1;j<length;j++){
+                if(array[i]>array[j]){
+                    int temp=array[i];
+                    array[i]=array[j];
+                    array[j]=temp;
+                }
+            }
+        }
+        
+        if(length%2!=0){         //this will give result of mid of array
+            int j=length/2;
+            result=array[j];
+        }
+        else{
+            int j=length/2;
+            int k=j-1;
+            int l=array[j]+array[k];
+            result=(float)l/2;
+        }
+        return result;
+        
+    }
+}

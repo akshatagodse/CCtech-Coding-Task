@@ -1,0 +1,31 @@
+Question : Given an integer x, return true if x is palindrome integer.
+
+An integer is a palindrome when it reads the same backward as forward.
+
+For example, 121 is a palindrome while 123 is not.
+
+
+
+
+class Solution {
+    //function will true if number is palindrome otherwise returns false
+    public boolean isPalindrome(int x) 
+    {
+        int num=x;    //stored original number in another variable for checking
+        int rev=0,rem;
+        while(x!=0)
+        {
+            rem=x%10;         //if num is 1234 this will results 1234%10=4
+            rev=rev*10+rem;   //0*10+4=4 
+            x=x/10;           //1234/10=123  
+        }                     //this while loop circulates till last digit and reults in reverse of number
+    
+        if(num<0)             //if num is negative then it is not palindrome number
+            return false;
+        if(num==rev)           //here we check original number with reverse
+            return true;       //if original number is equal to reverse then number is palindrome 
+        else
+            return false;       //else no   
+       
+    }
+}
